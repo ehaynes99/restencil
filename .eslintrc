@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-react", "prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "plugins": ["react", "react-hooks"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "semi": ["error", "never"],
+    "semi-style": ["error", "first"],
+    "quotes": ["error", "single"],
+    "comma-dangle": ["error", "only-multiline"],
+    "space-before-function-paren": "off",
+    "react/jsx-boolean-value": "off",
+    "react/prop-types": "off",
+    "no-return-assign": "off",
+    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
