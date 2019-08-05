@@ -3,14 +3,20 @@
   "version": "0.0.1",
   "author": "Eric Haynes",
   "license": "MIT",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/ehaynes99/restencil.git"
   },
+  "publishConfig": {
+    "registry": "http://eh-home:4873"
+  },
   "main": "dist/restencil.cjs.js",
   "module": "dist/restencil.esm.js",
+  "bin": {
+    "rsw": "bin/rsw-cli.js"
+  },
   "files": [
+    "bin",
     "dist"
   ],
   "husky": {
@@ -33,18 +39,24 @@
     "precommit": "lint-staged && npm run test:ci",
     "start": "webpack-dev-server -d",
     "test": "jest test --watch --notify -t",
-    "test:ci": "CI=true jest test --color"
+    "test:ci": "CI=true jest test --color",
+    "tmpstart": "nodemon --exec babel-node ./tmp/experiments/index.js"
   },
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "require-from-string": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
@@ -72,6 +84,7 @@
     "jest": "^24.8.0",
     "jest-css-modules": "^2.1.0",
     "lint-staged": "^9.2.1",
+    "nodemon": "^1.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rimraf": "^2.6.3",
