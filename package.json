@@ -1,6 +1,6 @@
 {
   "name": "restencil",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "author": "Eric Haynes",
   "license": "MIT",
   "repository": {
@@ -13,12 +13,16 @@
   "main": "dist/restencil.cjs.js",
   "module": "dist/restencil.esm.js",
   "bin": {
-    "rsw": "bin/rsw-cli.js"
+    "restencil": "bin/restencil"
   },
   "files": [
     "bin",
-    "dist"
+    "src"
   ],
+  "engines": {
+    "node": ">=8.9.0",
+    "npm": ">=6.0.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run precommit"
@@ -42,15 +46,11 @@
     "test:ci": "CI=true jest test --color",
     "tmpstart": "nodemon --exec babel-node ./tmp/experiments/index.js"
   },
-  "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "require-from-string": "^2.0.2"
+    "@babel/register": "^7.5.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -66,7 +66,7 @@
     "css-loader": "^3.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "eslint": "^6.1.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-config-standard-react": "^8.0.0",
