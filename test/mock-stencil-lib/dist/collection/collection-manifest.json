@@ -1,0 +1,7 @@
+{
+  "entries": [
+    "components/first/first.js",
+    "components/first/first-sub/first-sub.js",
+    "components/second/second.js"
+  ]
+}
