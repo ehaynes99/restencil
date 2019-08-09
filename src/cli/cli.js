@@ -1,10 +1,9 @@
 const cli = () => {
-  console.log('***** __filename:', __filename)
   const commandName = process.argv[2]
   const args = process.argv.slice(3)
 
   try {
-    const command = require(`./commands/${commandName}`)
+    const command = require(`./${commandName}`)
     command(args)
   } catch (error) {
     console.error(error)

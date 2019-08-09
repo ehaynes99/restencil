@@ -1,4 +1,4 @@
-const loadComponentDefinition = require('util/loadComponentDefinition')
+const loadComponentDefinition = require('generator/loadComponentDefinition')
 const path = require('path')
 
 const stencilDistPath = path.join(

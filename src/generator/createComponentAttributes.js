@@ -13,13 +13,11 @@ const createComponentAttributes = (componentDefinition) => {
 
       const eventHandlers = events.map((event) => {
         const eventName = event.name
-        // const name =
-        //   'on' + eventName.slice(0, 1).toUpperCase() + eventName.slice(1)
         const name = [
           'on',
           eventName.slice(0, 1).toUpperCase(),
           eventName.slice(1),
-        ].join()
+        ].join('')
 
         return { name, eventName }
       })
