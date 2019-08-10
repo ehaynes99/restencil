@@ -33,4 +33,13 @@ const createComponentAttributes = (componentDefinition) => {
   )
 }
 
-module.exports = createComponentAttributes
+const createComponentSource = (componentDefinition) => {
+  const attributes = createComponentAttributes(componentDefinition)
+
+  return attributes.map(({ className, ...props }) => {
+    const attrJson = JSON.stringify(props, null, 2)
+    return `export const ${className} = createWrapper(${attrJson})`
+  })
+}
+
+module.exports = createComponentSource

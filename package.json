@@ -1,6 +1,6 @@
 {
   "name": "restencil",
-  "version": "0.1.7",
+  "version": "0.1.12",
   "author": "Eric Haynes",
   "license": "MIT",
   "repository": {
@@ -50,7 +50,8 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/register": "^7.5.5"
+    "@babel/register": "^7.5.5",
+    "commander": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
