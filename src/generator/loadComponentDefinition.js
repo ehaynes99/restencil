@@ -1,13 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-require('@babel/register')({
-  ignore: [],
-  babelrc: false,
-  plugins: [
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-transform-modules-commonjs',
-  ],
-})
 
 const parseClassFile = (stencilClassPath) => {
   const classModule = require(stencilClassPath)
@@ -30,7 +22,7 @@ const loadComponentDefinition = (stencilDistPath) => {
   const stencilClassPaths = JSON.parse(
     fs.readFileSync(createPath('collection-manifest.json')),
   ).entries.map(createPath)
-    
+
   return {
     components: stencilClassPaths.map(parseClassFile),
   }

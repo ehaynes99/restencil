@@ -1,6 +1,6 @@
 {
   "name": "restencil",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "author": "Eric Haynes",
   "license": "MIT",
   "repository": {
@@ -20,8 +20,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=8.9.0",
-    "npm": ">=6.0.0"
+    "node": ">=8.9.0"
   },
   "husky": {
     "hooks": {
@@ -35,38 +34,16 @@
     ]
   },
   "scripts": {
-    "build": "rimraf dist && rollup -c",
-    "build:demo": "rimraf demo/build && webpack --mode production",
-    "deploy": "npm run build:demo && gh-pages -d demo/build",
-    "dev": "rollup -c -w",
     "lint": "eslint src test",
-    "precommit": "lint-staged && npm run test:ci",
-    "start": "webpack-dev-server -d",
-    "test": "jest test --watch --notify -t",
-    "test:ci": "CI=true jest test --color",
-    "tmpstart": "nodemon --exec babel-node ./tmp/experiments/index.js"
+    "precommit": "lint-staged"
   },
   "dependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/register": "^7.5.5",
-    "commander": "^3.0.0"
+    "commander": "^3.0.0",
+    "esm": "^3.2.25"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.1.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
@@ -79,27 +56,10 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-standard": "^4.0.0",
-    "gh-pages": "^2.1.0",
-    "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.2",
-    "jest": "^24.8.0",
-    "jest-css-modules": "^2.1.0",
     "lint-staged": "^9.2.1",
     "nodemon": "^1.19.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "rimraf": "^2.6.3",
-    "rollup": "^1.18.0",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.0.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-replace": "^2.2.0",
-    "rxjs": "^6.5.2",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "rxjs": "^6.5.2"
   }
 }
