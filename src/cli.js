@@ -1,10 +1,10 @@
 const args = require('commander')
 const path = require('path')
-const loadComponentDefinition = require('../generator/loadComponentDefinition')
-const createComponentSource = require('../generator/createComponentSource')
+const loadComponentDefinition = require('./loadComponentDefinition')
+const createComponentSource = require('./createComponentSource')
 
 args
-  .version(require('../../package.json').version)
+  .version(require('../package.json').version)
   .name('restencil')
   .option('-m, --module-name <name>', 'name of the stencil node module')
   .option('-o, --output-dir', 'dist dir', 'dist')
