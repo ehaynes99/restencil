@@ -1,28 +1,26 @@
-const args = require('commander')
 const path = require('path')
+const fs = require('fs-extra')
+
 const loadComponentDefinition = require('./loadComponentDefinition')
 const createComponentSource = require('./createComponentSource')
 
-args
-  .version(require('../package.json').version)
-  .name('restencil')
-  .option('-m, --module-name <name>', 'name of the stencil node module')
-  .option('-o, --output-dir', 'dist dir', 'dist')
-
-args.parse(process.argv)
-
-const stencilDistPath = path.join(
-  process.env.PWD,
-  'node_modules',
-  args.moduleName,
-  'dist',
-)
+const { stencilDistPath, outDir } = require('./parseArgs')()
 
 const build = () => {
+  fs.remove(outDir)
+  const generatedSrc = path.join(outDir, 'src')
+  fs.mkdirpSync(generatedSrc)
   const componentDefinition = loadComponentDefinition(stencilDistPath)
 
   const componentSources = createComponentSource(componentDefinition)
-  console.log('***** componentSources:', componentSources)
+  fs.writeFileSync(
+    path.join(generatedSrc, 'components.js'),
+    componentSources.join('\n\n'),
+  )
+  fs.copyFileSync(
+    path.join(__dirname, 'createWrapper.js'),
+    path.join(generatedSrc, 'createWrapper.js'),
+  )
 }
 
 const cli = () => {

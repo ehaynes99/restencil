@@ -23,7 +23,7 @@ const createComponentAttributes = (componentDefinition) => {
       })
 
       return {
-        className,
+        displayName: className,
         htmlTag,
         attributes,
         directProps,
@@ -34,11 +34,12 @@ const createComponentAttributes = (componentDefinition) => {
 }
 
 const createComponentSource = (componentDefinition) => {
-  const attributes = createComponentAttributes(componentDefinition)
+  const components = createComponentAttributes(componentDefinition)
 
-  return attributes.map(({ className, ...props }) => {
-    const attrJson = JSON.stringify(props, null, 2)
-    return `export const ${className} = createWrapper(${attrJson})`
+  return components.map((attributes) => {
+    const { displayName } = attributes
+    const attrJson = JSON.stringify(attributes, null, 2)
+    return `export const ${displayName} = createWrapper(${attrJson})`
   })
 }
 

@@ -4,6 +4,7 @@ dependencies:
   '@babel/plugin-transform-modules-commonjs': 7.5.0_@babel+core@7.5.5
   '@babel/register': 7.5.5_@babel+core@7.5.5
   commander: 3.0.0
+  fs-extra: 8.1.0
 devDependencies:
   babel-eslint: 10.0.2_eslint@5.16.0
   eslint: 5.16.0
@@ -1121,6 +1122,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
+  /fs-extra/8.1.0:
+    dependencies:
+      graceful-fs: 4.2.1
+      jsonfile: 4.0.0
+      universalify: 0.1.2
+    dev: false
+    engines:
+      node: '>=6 <7 || >=8'
+    resolution:
+      integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
   /fs.realpath/1.0.0:
     dev: true
     resolution:
@@ -1204,7 +1215,6 @@ packages:
     resolution:
       integrity: sha512-sSs4inE1FB2YQiymcmTv6NWENryABjUNPeWhOvmn4SjtKybglsyPZxFB3U1/+L1bYi0rNZDqCLlHyLYDl1Pq5A==
   /graceful-fs/4.2.1:
-    dev: true
     resolution:
       integrity: sha512-b9usnbDGnD928gJB3LrCmxoibr3VE4U2SMo5PBuBnokWyDADTqDPXg4YpwKF1trpH+UbGp7QLicO3+aWEy0+mw==
   /has-ansi/2.0.0:
@@ -1523,6 +1533,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-8Mh9h6xViijj36g7Dxi+Y4S6hNGV96vcJZr/SrlHh1LR/pEn/8j/+qIBbs44YKl69Lrfctp4QD+AdWLTMqEZAQ==
+  /jsonfile/4.0.0:
+    dev: false
+    optionalDependencies:
+      graceful-fs: 4.2.1
+    resolution:
+      integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   /jsx-ast-utils/2.2.1:
     dependencies:
       array-includes: 3.0.3
@@ -2580,6 +2596,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-q+MB8nYR1KDLrgr4G5yemftpMC7/QLqVndBmEEdqzmNj5dcFOO4Oo8qlwZE3ULT3+Zim1F8Kq4cBnikNhlCMlg==
+  /universalify/0.1.2:
+    dev: false
+    engines:
+      node: '>= 4.0.0'
+    resolution:
+      integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
   /uri-js/4.2.2:
     dependencies:
       punycode: 2.1.1
@@ -2648,6 +2670,7 @@ specifiers:
   eslint-plugin-react: ^7.14.3
   eslint-plugin-react-hooks: ^1.6.1
   eslint-plugin-standard: ^4.0.0
+  fs-extra: ^8.1.0
   husky: ^3.0.2
   lint-staged: ^9.2.1
   react: ^16.8.6
