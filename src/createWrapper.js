@@ -1,7 +1,17 @@
 import React from 'react'
 
 const createWrapper = (definition) => {
-  const WrapperComponent = React.forwardRef((props, ref) => {
+  const WrapperComponent = React.forwardRef((props, forwardedRef) => {
+    const ref = React.useRef()
+    const setRef = React.useCallback(
+      (value) => {
+        ref.current = value
+        if (forwardedRef) {
+          forwardedRef.current = value
+        }
+      },
+      [forwardedRef],
+    )
     const attributeProps = React.useMemo(() => {
       return definition.attributes.reduce((result, { name, attribute }) => {
         result[attribute] = props[name]
@@ -41,10 +51,10 @@ const createWrapper = (definition) => {
     return React.useMemo(() => {
       return React.createElement(
         definition.htmlTag,
-        { ref, ...attributeProps },
+        { ref: setRef, ...attributeProps },
         props.children,
       )
-    }, [attributeProps, props.children, ref])
+    }, [attributeProps, props.children, setRef])
   })
   WrapperComponent.displayName = definition.displayName
   return WrapperComponent
