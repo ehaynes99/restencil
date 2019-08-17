@@ -1,3 +1,6 @@
+const path = require('path')
+const fs = require('fs-extra')
+
 const createComponentAttributes = (componentDefinition) => {
   return componentDefinition.components.map(
     ({ className, htmlTag, properties, events }) => {
@@ -33,14 +36,26 @@ const createComponentAttributes = (componentDefinition) => {
   )
 }
 
-const createComponentSource = (componentDefinition) => {
-  const components = createComponentAttributes(componentDefinition)
-
-  return components.map((attributes) => {
-    const { displayName } = attributes
-    const attrJson = JSON.stringify(attributes, null, 2)
-    return `export const ${displayName} = createWrapper(${attrJson})`
-  })
+const getWrapperContent = () => {
+  const wrapperFile = path.join(__dirname, 'createWrapper.js')
+  return fs
+    .readFileSync(wrapperFile)
+    .toString()
+    .replace(/^export .*/m, '')
+    .trim()
 }
 
-module.exports = createComponentSource
+const generateSource = (componentDefinition) => {
+  let result = getWrapperContent() + '\n\n'
+
+  const components = createComponentAttributes(componentDefinition)
+  components.forEach((attributes) => {
+    const { displayName } = attributes
+    const attrJson = JSON.stringify(attributes, null, 2)
+    result += `export const ${displayName} = createWrapper(${attrJson})\n\n`
+  })
+
+  return result
+}
+
+module.exports = generateSource
