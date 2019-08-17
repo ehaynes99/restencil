@@ -1,9 +1,7 @@
 import React from 'react'
 
 const createWrapper = (definition) => {
-  const WrapperComponent = (props) => {
-    const ref = React.useRef()
-
+  const WrapperComponent = React.forwardRef((props, ref) => {
     const attributeProps = React.useMemo(() => {
       return definition.attributes.reduce((result, { name, attribute }) => {
         result[attribute] = props[name]
@@ -38,7 +36,7 @@ const createWrapper = (definition) => {
           refValue.removeEventListener(eventName, handler)
         })
       }
-    }, [props])
+    }, [props, ref])
 
     return React.useMemo(() => {
       return React.createElement(
@@ -46,8 +44,8 @@ const createWrapper = (definition) => {
         { ref, ...attributeProps },
         props.children,
       )
-    }, [attributeProps, props])
-  }
+    }, [attributeProps, props.children, ref])
+  })
   WrapperComponent.displayName = definition.displayName
   return WrapperComponent
 }
