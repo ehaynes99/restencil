@@ -69,7 +69,7 @@ npm i -D restencil
   * `unpkg` - umd module
 
 ### Example `package.json`
-```json
+```js
 {
   "name": "awesome-lib-react",
   "version": "1.0.0",
@@ -83,13 +83,12 @@ npm i -D restencil
     "build": "restencil -m awesome-lib" // build script, with '-m stencil-module-name'
   },
   "peerDependencies": {
-    "react": "^16.8.0" // signifies that this must be included with a project using React 16.8
-  },
-  "dependencies": {
-    "awesome-lib": "^1.3.1" // the stencil component module
+    "awesome-lib": "1.2.3", // the stencil component module
+    "react": "^16.8.0" // must be used with React 16.8.x
   },
   "devDependencies": {
-    "restencil": "^0.2.0" // 
+    "awesome-lib": "1.2.3" // the stencil component module
+    "restencil": "^0.2.0"
   }
 }
 
