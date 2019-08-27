@@ -4,11 +4,10 @@ const fs = require('fs-extra')
 const createComponentAttributes = (componentDefinition) => {
   return componentDefinition.components.map(
     ({ className, htmlTag, properties, events }) => {
-      const propNames = Object.keys(properties)
       const attributes = []
       const directProps = []
 
-      propNames.forEach((name) => {
+      Object.keys(properties).forEach((name) => {
         const attribute = properties[name].attribute
         attribute
           ? attributes.push({ name, attribute })
@@ -22,14 +21,13 @@ const createComponentAttributes = (componentDefinition) => {
           eventName.slice(0, 1).toUpperCase(),
           eventName.slice(1),
         ].join('')
-        propNames.push(name)
+
         return { name, eventName }
       })
 
       return {
         displayName: className,
         htmlTag,
-        propNames,
         attributes,
         directProps,
         eventHandlers,
