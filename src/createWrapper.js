@@ -1,6 +1,10 @@
 import React from 'react'
 
 const createWrapper = (definition) => {
+  const attributeMapping = definition.attributes.reduce((result, { name, attribute }) => {
+    result[name] = attribute
+    return result
+  })
   const WrapperComponent = React.forwardRef((props, forwardedRef) => {
     const ref = React.useRef()
     const setRef = React.useCallback(
@@ -13,8 +17,13 @@ const createWrapper = (definition) => {
       [forwardedRef],
     )
     const attributeProps = React.useMemo(() => {
-      return definition.attributes.reduce((result, { name, attribute }) => {
-        result[attribute] = props[name]
+      return Object.keys(props).reduce((result, name) => {
+        const attributeName = attributeMapping[name]
+        if (attributeName) {
+          result[attributeName] = props[name]
+        } else if (!definition.propNames.includes(name)) {
+          result[name] = props[name]
+        }
         return result
       }, {})
     }, [props])
