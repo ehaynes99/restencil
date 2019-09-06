@@ -1,0 +1,20 @@
+.counter {
+  margin: 20px;
+  display: flex;
+  justify-content: stretch;
+  max-width: 130px;
+  min-width: 130px;
+  min-height: 30px;
+  border: 1px solid black;
+}
+
+button,
+span {
+  flex: 1 0;
+  flex-basis: 30px;
+  text-align: center;
+}
+
+span {
+  padding: 5px 0;
+}

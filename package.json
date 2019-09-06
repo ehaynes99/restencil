@@ -36,7 +36,9 @@
     "test": "jest test --watch -t",
     "test:ci": "CI=true jest test --color",
     "lint": "eslint src test",
-    "precommit": "lint-staged && npm run test:ci"
+    "precommit": "lint-staged && npm run test:ci",
+    "start:example": "npm start --prefix ./example-components",
+    "build:example": "npm run build --prefix ./example-components"
   },
   "dependencies": {
     "@babel/core": "^7.5.5",

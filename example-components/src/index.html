@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/example-components.esm.js"></script>
+    <script nomodule src="/build/example-components.js"></script>
+    <style>
+      body {
+        margin: 50px 100px;
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const list = document.querySelector('restencil-list')
+        list.items = [
+          {id: 1, text: 'foo' },
+          {id: 2, text: 'baz' },
+          {id: 3, text: 'bar' },
+        ]
+      })
+    </script>
+  </head>
+  <body>
+    <restencil-counter></restencil-counter>
+    <restencil-list></restencil-list>
+  </body>
+</html>
