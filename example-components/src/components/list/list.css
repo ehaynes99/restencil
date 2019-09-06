@@ -1,0 +1,20 @@
+.list {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 330px;
+  min-width: 330px;
+  border: 1px solid black;
+}
+
+button,
+span {
+  flex: 1 0;
+  flex-basis: 30px;
+  text-align: center;
+}
+
+span {
+  padding: 5px 0;
+}
