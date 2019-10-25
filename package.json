@@ -41,22 +41,22 @@
     "build:example": "npm run build --prefix ./example-components"
   },
   "dependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/register": "^7.5.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/register": "^7.6.2",
     "chalk": "^2.4.2",
-    "commander": "^3.0.0",
+    "commander": "^3.0.2",
     "fs-extra": "^8.1.0",
     "microbundle": "^0.11.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "babel-eslint": "^10.0.2",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
@@ -69,11 +69,11 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.6.1",
     "eslint-plugin-standard": "^4.0.0",
-    "husky": "^3.0.2",
+    "husky": "^3.0.9",
     "jest": "^24.9.0",
-    "lint-staged": "^9.2.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "rxjs": "^6.5.2"
+    "lint-staged": "^9.4.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "rxjs": "^6.5.3"
   }
 }
