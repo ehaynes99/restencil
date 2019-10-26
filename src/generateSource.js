@@ -10,12 +10,12 @@ const getWrapperContent = () => {
     .trim()
 }
 
-const generateSource = (componentsAttributes) => {
+const generateSource = (componentDefinitions) => {
   let result = getWrapperContent() + '\n\n'
 
-  componentsAttributes.forEach((attributes) => {
-    const { displayName } = attributes
-    const attrJson = JSON.stringify(attributes, null, 2)
+  componentDefinitions.forEach((definition) => {
+    const { displayName } = definition
+    const attrJson = JSON.stringify(definition, null, 2)
     result += `export const ${displayName} = createWrapper(${attrJson})\n\n`
   })
 

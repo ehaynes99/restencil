@@ -4,8 +4,9 @@ const commander = require('commander')
 const chalk = require('chalk')
 const getPaths = require('./getPaths')
 
-const loadComponentDefinition = require('./loadComponentDefinition')
+const readStencilClasses = require('./readStencilClasses')
 const generateSource = require('./generateSource')
+const extractComponentAttributes = require('./extractComponentAttributes')
 
 commander
   .version(require('../package.json').version)
@@ -22,8 +23,12 @@ if (!commander.moduleName) {
 const build = () => {
   const { generatedSourceFile, stencilDistPath } = getPaths()
 
-  const componentDefinition = loadComponentDefinition(stencilDistPath)
-  fs.outputFileSync(generatedSourceFile, generateSource(componentDefinition))
+  const parsedStencilComponents = readStencilClasses(stencilDistPath)
+
+  const componentDefinitions = extractComponentAttributes(
+    parsedStencilComponents,
+  )
+  fs.outputFileSync(generatedSourceFile, generateSource(componentDefinitions))
 
   console.log('generated source file:')
   console.log(chalk.green(generatedSourceFile))

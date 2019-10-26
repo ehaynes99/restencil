@@ -11,18 +11,18 @@ require('@babel/register')({
 
 const parseClassFile = (stencilClassPath) => {
   const classModule = require(stencilClassPath)
-  const className = Object.keys(classModule)[0]
-  const StencilClass = classModule[className]
+  const displayName = Object.keys(classModule)[0]
+  const StencilClass = classModule[displayName]
 
   return {
-    className,
+    displayName,
     htmlTag: StencilClass.is,
     properties: StencilClass.properties || {},
     events: StencilClass.events || [],
   }
 }
 
-const loadComponentDefinition = (stencilDistPath) => {
+const readStencilClasses = (stencilDistPath) => {
   const createPath = (relPath) => {
     return path.join(stencilDistPath, 'collection', relPath)
   }
@@ -30,10 +30,8 @@ const loadComponentDefinition = (stencilDistPath) => {
   const stencilClassPaths = JSON.parse(
     fs.readFileSync(createPath('collection-manifest.json')),
   ).entries.map(createPath)
-    
-  return {
-    components: stencilClassPaths.map(parseClassFile),
-  }
+
+  return stencilClassPaths.map(parseClassFile)
 }
 
-module.exports = loadComponentDefinition
+module.exports = readStencilClasses
