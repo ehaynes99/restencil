@@ -17,13 +17,10 @@ const createWrapper = (definition) => {
       ...definition.directProps,
     )
 
-    const attributeMapping = definition.attributes.reduce(
-      (result, { name, attribute }) => {
-        result[name] = attribute
-        return result
-      },
-      { className: 'class' },
-    )
+    const attributeMapping = {
+      ...definition.attributes,
+      className: 'class',
+    }
 
     return (propName) => {
       if (!nonAttributeNames.has(propName)) {

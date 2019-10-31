@@ -1,14 +1,14 @@
 const extractComponentAttributes = (parsedStencilComponents) => {
   return parsedStencilComponents.map(
     ({ displayName, htmlTag, properties, events }) => {
-      const attributes = []
+      const attributes = {}
       const directProps = []
 
 
       Object.keys(properties).forEach((name) => {
         const attribute = properties[name].attribute
         attribute
-          ? attributes.push({ name, attribute })
+          ? attributes[name] = attribute
           : directProps.push(name)
       })
 
