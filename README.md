@@ -3,6 +3,7 @@
 ## ARCHIVED - Use https://github.com/ionic-team/stencil-ds-plugins
 The ionic team has released their own official library for this purpose that better integrates and should have much better support. Leaving this around as an example of wrapper component generation.
 
+---
 Automatically generates React components for a component library created with [stencil.js](https://github.com/ionic-team/stencil). No more worrying about whether props are arrays or objects, and no more cumbersome attachment of event listeners. Just use them like any other React component.
 
 ## Example
